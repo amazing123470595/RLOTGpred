@@ -119,26 +119,26 @@ def GetZccF_LiHua(train_negative, train_positive, test_negative, test_positive):
     train_positive_ZccF_LiHua = ZccF_LiHua(train_positive)
     train_negative_ZccF_LiHua = ZccF_LiHua(train_negative)
 
-    X_train = np.concatenate((train_negative_ZccF_LiHua, train_positive_ZccF_LiHua), axis=0)
+    X_train = np.concatenate((train_positive_ZccF_LiHua, train_negative_ZccF_LiHua), axis=0)
 
     N_train_Pos = train_positive_ZccF_LiHua.shape[0]
     N_train_Neg = train_negative_ZccF_LiHua.shape[0]
 
     train_positive_labels = np.ones(N_train_Pos)
     train_negative_labels = np.zeros(N_train_Neg)
-    y_train = np.concatenate((train_negative_labels, train_positive_labels), axis=0)
+    y_train = np.concatenate((train_positive_labels, train_negative_labels), axis=0)
 
     test_positive_ZccF_LiHua = ZccF_LiHua(test_positive)
     test_negative_ZccF_LiHua = ZccF_LiHua(test_negative)
 
-    X_test = np.concatenate((test_negative_ZccF_LiHua, test_positive_ZccF_LiHua), axis=0)
+    X_test = np.concatenate((test_positive_ZccF_LiHua, test_negative_ZccF_LiHua), axis=0)
 
     N_test_Pos = test_positive_ZccF_LiHua.shape[0]
     N_test_Neg = test_negative_ZccF_LiHua.shape[0]
     # 标签
     test_positive_labels = np.ones(N_test_Pos)
     test_negative_labels = np.zeros(N_test_Neg)
-    y_test = np.concatenate((test_negative_labels, test_positive_labels), axis=0)
+    y_test = np.concatenate((test_positive_labels, test_negative_labels), axis=0)
 
     num_P = N_train_Pos + N_test_Pos
     num_N = N_train_Neg + N_test_Neg
@@ -151,26 +151,26 @@ def GetZccF_alltoK(train_negative, train_positive, test_negative, test_positive)
     train_positive_ZccF_alltoK = ZccF_alltoK(train_positive)
     train_negative_ZccF_alltoK = ZccF_alltoK(train_negative)
 
-    X_train = np.concatenate((train_negative_ZccF_alltoK, train_positive_ZccF_alltoK), axis=0)
+    X_train = np.concatenate((train_positive_ZccF_alltoK, train_negative_ZccF_alltoK), axis=0)
 
     N_train_Pos = train_positive_ZccF_alltoK.shape[0]
     N_train_Neg = train_negative_ZccF_alltoK.shape[0]
 
     train_positive_labels = np.ones(N_train_Pos)
     train_negative_labels = np.zeros(N_train_Neg)
-    y_train = np.concatenate((train_negative_labels, train_positive_labels), axis=0)
+    y_train = np.concatenate((train_positive_labels, train_negative_labels), axis=0)
 
     test_positive_ZccF_alltoK = ZccF_alltoK(test_positive)
     test_negative_ZccF_alltoK = ZccF_alltoK(test_negative)
 
-    X_test = np.concatenate((test_negative_ZccF_alltoK, test_positive_ZccF_alltoK), axis=0)
+    X_test = np.concatenate((test_positive_ZccF_alltoK, test_negative_ZccF_alltoK), axis=0)
 
     N_test_Pos = test_positive_ZccF_alltoK.shape[0]
     N_test_Neg = test_negative_ZccF_alltoK.shape[0]
 
     test_positive_labels = np.ones(N_test_Pos)
     test_negative_labels = np.zeros(N_test_Neg)
-    y_test = np.concatenate((test_negative_labels, test_positive_labels), axis=0)
+    y_test = np.concatenate((test_positive_labels, test_negative_labels), axis=0)
 
     num_P = N_train_Pos + N_test_Pos
     num_N = N_train_Neg + N_test_Neg

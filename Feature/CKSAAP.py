@@ -35,23 +35,23 @@ def GetCKSAAP_2(negative, positive):
 def GetCKSAAP_4(train_negative, train_positive, test_negative, test_positive):
     train_positive_embedding = extract_cksAAP_from_fasta(train_positive)
     train_negative_embedding = extract_cksAAP_from_fasta(train_negative)
-    X_train = np.vstack((train_negative_embedding, train_positive_embedding))
+    X_train = np.vstack((train_positive_embedding, train_negative_embedding))
 
     num_train_P = train_positive_embedding.shape[0]
     num_train_N = train_negative_embedding.shape[0]
     train_positive_labels = np.ones(num_train_P)
     train_negative_labels = np.zeros(num_train_N)
-    y_train = np.concatenate((train_negative_labels, train_positive_labels), axis=0)
+    y_train = np.concatenate((train_positive_labels, train_negative_labels), axis=0)
 
     test_positive_embedding = extract_cksAAP_from_fasta(test_positive)
     test_negative_embedding = extract_cksAAP_from_fasta(test_negative)
-    X_test = np.vstack((test_negative_embedding, test_positive_embedding))
+    X_test = np.vstack((test_positive_embedding, test_negative_embedding))
 
     num_test_P = test_positive_embedding.shape[0]
     num_test_N = test_negative_embedding.shape[0]
     test_positive_labels = np.ones(num_test_P)
     test_negative_labels = np.zeros(num_test_N)
-    y_test = np.concatenate((test_negative_labels, test_positive_labels), axis=0)
+    y_test = np.concatenate((test_positive_labels, test_negative_labels), axis=0)
 
     num_P = num_train_P + num_test_P
     num_N = num_train_N + num_test_N
@@ -67,23 +67,23 @@ def GetCKSAAP_4(train_negative, train_positive, test_negative, test_positive):
 def GetCKSAAP_41(train_negative, train_positive, test_negative, test_positive):
     train_positive_embedding = extract_cksAAP_from_fasta(train_positive)
     train_negative_embedding = extract_cksAAP_from_fasta(train_negative)
-    X_train = np.vstack((train_negative_embedding, train_positive_embedding))
+    X_train = np.vstack((train_positive_embedding, train_negative_embedding))
 
     num_train_P = train_positive_embedding.shape[0]
     num_train_N = train_negative_embedding.shape[0]
     train_positive_labels = np.ones(num_train_P)
     train_negative_labels = np.zeros(num_train_N)
-    y_train = np.concatenate((train_negative_labels, train_positive_labels), axis=0)
+    y_train = np.concatenate((train_positive_labels, train_negative_labels), axis=0)
 
     test_positive_embedding = extract_cksAAP_from_fasta(test_positive)
     test_negative_embedding = extract_cksAAP_from_fasta(test_negative)
-    X_test = np.vstack((test_negative_embedding, test_positive_embedding))
+    X_test = np.vstack((test_positive_embedding, test_negative_embedding))
 
     num_test_P = test_positive_embedding.shape[0]
     num_test_N = test_negative_embedding.shape[0]
     test_positive_labels = np.ones(num_test_P)
     test_negative_labels = np.zeros(num_test_N)
-    y_test = np.concatenate((test_negative_labels, test_positive_labels), axis=0)
+    y_test = np.concatenate((test_positive_labels, test_negative_labels), axis=0)
 
     num_P = num_train_P + num_test_P
     num_N = num_train_N + num_test_N

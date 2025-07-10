@@ -24,10 +24,11 @@ from torchrl.envs import (
 from torchrl.modules import ProbabilisticActor, ValueOperator
 from torchrl.objectives import ClipPPOLoss
 # from My_advantages import GAE # 自己的GAE
-from torchrl.objectives.value import GAE   # 用官方GAE
+from torchrl.objectives.value import GAE   # 注释掉：不再用官方GAE
 from tqdm import tqdm
-from Env import PPOEnvZcc
-from Features import GetProtT5_T_4
+from Env_for_neg import PPOEnvZcc # 自己的奖励
+# from Env import PPOEnvZcc # 用官方的Env
+from Features import GetOthers
 import torch.nn.functional as F
 
 device = "cpu"
@@ -35,7 +36,6 @@ lr = 3e-4
 max_grad_norm = 1.0
 frames_per_batch = 10000
 total_frames = 72511 * 5
-# total_frames = 60000 * 5 # 改一下
 sub_batch_size = 1000
 num_epochs = 10
 clip_epsilon = (
@@ -46,15 +46,13 @@ lmbda = 0.95
 entropy_eps = 1e-4
 
 # 数据信息
-model_name = "ProtT5"
+model_name = "Others"
 
 # 全部数据集
-test_negative = "../Dataset/test/features/neg_Independent_CD_ProtT5_features_T.csv"
-test_positive = "../Dataset/test/features/pos_Independent_CD_ProtT5_features_T.csv"
-train_negative = "../Dataset/train/features/neg_Training_CD_ProtT5_features_T.csv"
-train_positive = "../Dataset/train/features/pos_Training_CD_ProtT5_features_T.csv"
+test_all = "../Dataset/test/features/merged_feature_independent.csv"
+train_all = "../Dataset/train/features/merged_feature_training.csv"
 
-X_train, y_train, X_test, y_test, ratio = GetProtT5_T_4(train_negative, train_positive, test_negative, test_positive)
+X_train, y_train, X_test, y_test, ratio = GetOthers(train_all, test_all)
 X_train = X_train.astype(np.float32)
 X_test = X_test.astype(np.float32)
 y_test = y_test.astype(int)
