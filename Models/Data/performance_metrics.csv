@@ -1,2 +1,2 @@
-Balanced Accuracy,MCC,Sensitivity,Specificity,F1 Score
-0.8674999999999999,0.7390855006933363,0.92,0.815,0.8741092636579573
+Balanced Accuracy,MCC,Sensitivity,Specificity,F1 Score,Acc
+0.89,0.7803512371028338,0.905,0.875,0.8916256157635468,0.89

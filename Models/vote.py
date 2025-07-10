@@ -85,7 +85,7 @@ predicted_actions = []
 Probabilities = []
 with torch.no_grad():
     weight1 = 0.75
-    weight2 = 0.25
+    weight2 = 1 - weight1
     for i in range(X_ProtT5_test.shape[0]):
         td1 = TensorDict(
             {},
@@ -117,6 +117,11 @@ with torch.no_grad():
         predicted_actions.append(prediction)
 
 TN, FP, FN, TP = confusion_matrix(y_test, predicted_actions, labels=[0, 1]).ravel()
+
+# 找到不一致的索引
+wrong_indices = np.where(y_test != predicted_actions)[0]
+print("预测错误的样本序号:", wrong_indices)
+
 numerator = (TP * TN) - (FP * FN)
 denominator = ((TP + FP) * (TP + FN) * (TN + FP) * (TN + FN)) ** 0.5
 MCC = numerator / denominator if denominator != 0 else 0
