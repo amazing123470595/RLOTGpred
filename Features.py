@@ -67,7 +67,7 @@ def GetTPEMPPS_CCP(train_negative, train_positive, test_negative, test_positive)
     X_train = np.concatenate((X_train2, X_train1), axis=1)
     X_test = np.concatenate((X_test2, X_test1), axis=1)
 
-    print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
+    # print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
     return X_train, y_train, X_test, y_test, ratio
 
 def GetMerged_Feature(train_all, test_all):
@@ -137,8 +137,8 @@ def GetESM2(train_all, test_all):
         # 提取要的列名
         first_col_name = header[start_col]
         last_col_name = header[end_col - 1]
-        print(f"提取到的第一列列名: {first_col_name}")
-        print(f"提取到的最后一列列名: {last_col_name}")
+        # print(f"提取到的第一列列名: {first_col_name}")
+        # print(f"提取到的最后一列列名: {last_col_name}")
         # 提取数据部分：第 557 列到 1836 列
         train_Merged = np.array([row[start_col:end_col] for row in csv_reader1])
         
@@ -200,8 +200,8 @@ def GetOthers(train_all, test_all):
         # 提取要的列名
         first_col_name = header[start_col]
         last_col_name = header[end_col - 1]
-        print(f"提取到的第一列列名: {first_col_name}")
-        print(f"提取到的最后一列列名: {last_col_name}")
+        # print(f"提取到的第一列列名: {first_col_name}")
+        # print(f"提取到的最后一列列名: {last_col_name}")
         # 提取数据部分：第 3 列到 556 列
         train_Merged = np.array([row[start_col:end_col] for row in csv_reader1])
         

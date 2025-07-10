@@ -192,5 +192,5 @@ def GetTPEMPPS(train_negative, train_positive, test_negative, test_positive):
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
 
-    print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
+    # print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
     return X_train, y_train, X_test, y_test, ratio
